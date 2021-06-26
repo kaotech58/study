@@ -4,49 +4,107 @@ void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
-
-void	print_horizontal(int x, char left, char middle, char right)
-{
-	if (x-- >= 1)
-	{
-		ft_putchar(left);
-		while (x-- >= 2)
-		{
-			ft_putchar(middle);
-		}
-		if (x == 0)
-			ft_putchar(right);
-			ft_putchar('\n');
-	}
-}
-
-void	print_vertical(int x, int y, char wall)
-{
-	int i;
-
-	while (y-- > 2)
-	{
-		ft_putchar(wall);
-		i = 2;
-		while (x > i++)
-			ft_putchar(' ');
-		ft_putchar(wall);
-		ft_putchar('\n');
-	}
-}
+/*STARTS HERE */
 
 void	rush(int x, int y)
 {
-	if (y >= 1)
-		print_horizontal(x, 'A', 'B', 'A');
-	print_vertical(x, y, 'B');
-	if (y >= 2)
-		print_horizontal(x, 'C', 'B', 'C');
+	int i;
+	int j;
+	int k;
+	int l;
+
+	l = 1;
+	while (l <= y)
+	{
+		if (l == 1)
+		{
+			i = 1;
+			while (i <= x)
+				if (i == 1 && i == x)
+				{
+					write(1, "A\n", 2);
+					l++;
+					break;
+				}
+				else if (i == 1)
+				{
+					write(1, "A", 1);
+					i++;
+				}
+				else if (i == x)
+				{
+					write(1, "A\n", 2);
+					l++;
+					break;
+				}
+				else
+				{
+					write(1, "B", 1);
+					i++;
+				}
+		}
+		else if (l == y)
+		{
+			j = 1;
+			while (j <= x)
+				if (j == 1 && j == x)
+				{
+					write(1, "C\n", 2);
+					l++;
+					break;
+				}
+				else if (j == 1)
+				{
+					write(1, "C", 1);
+					j++;
+				}
+				else if (j == x)
+				{
+					write(1, "C\n", 2);
+					l++;
+					break;
+				}
+				else
+				{
+					write(1, "B", 1);
+					j++;
+				}
+			
+		}
+		else
+		{
+			k = 1;
+			while (k <= x)
+				if (k == 1 && k == x)
+				{
+					write(1, "B\n", 2);
+					l++;
+					break;
+				}
+				else if (k == 1)
+				{
+					write(1, "B", 1);
+					k++;
+				}
+				else if (k == x)
+				{
+					write(1, "B\n", 2);
+					l++;
+					break;
+				}
+				else
+				{
+					write(1, " ", 1);
+					k++;
+				}
+		}
+
+	}
 }
 
-int             main()
+/*ENDS HERE*/
+int		main(void)
 {
-        rush(1, 5);
-        return (0);
+	rush(4, 4);
+	return (0);
 }
-
