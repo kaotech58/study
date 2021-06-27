@@ -1,11 +1,6 @@
-#include <unistd.h>
+void	ft_putchar(char c);
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void rows(int x, char start, char middle, char end)
+void	rows(int x, char start, char middle, char end)
 {
 	int	count;
 
@@ -62,10 +57,4 @@ void	rush(int x, int y)
 		}
 
 	}
-}
-
-int		main(void)
-{
-	rush(25, 15);
-	return (0);
 }
