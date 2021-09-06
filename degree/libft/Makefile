@@ -1,37 +1,43 @@
-SRCS			= ft_putchar.c ft_putchar_fd.c ft_putnbr.c	\
-			  ft_putnbr_fd.c
+SRCS				= ft_putchar.c \
+				  ft_putchar_fd.c \
+				  ft_putnbr.c	\
+				  ft_putnbr_fd.c
 
-OBJS_DIR		= objs/
-OBJS			= $(SRCS:.c=.o)
-OBJECTS_PREFIXED	= $(addprefix $(OBJS_DIR), $(OBJS))
-DEPS			= libft.h
+OBJS_DIR			= objs/
+OBJS				= $(SRCS:.c=.o)
+OBJECTS_PREFIXED		= $(addprefix $(OBJS_DIR), $(OBJS))
+DEPS				= libft.h
 
-NAME			= libft.a
+NAME				= libft.a
 
-CC			= gcc
-RMDIR			= rm -rf
-RM			= rm -f
-CCFLAGS			= -Wall -Wextra -Werror -I.
+CC				= gcc
+RMDIR				= rm -rf
+RM				= rm -f
+CCFLAGS				= -Wall -Wextra -Werror -I.
 
 $(OBJS_DIR)%.o : %.c $(DEPS)
 				@mkdir -p $(OBJS_DIR)
-				@echo "Compiling: $<"
+				@echo $(GRN)"Compiling: $<"$(EOC)
 				@gcc $(CC_FLAGS) -c $< -o $@
 
-all:			$(NAME)
+all:				$(NAME)
 
-$(NAME):		$(OBJECTS_PREFIXED)
-				ar rcs $(NAME) $(OBJECTS_PREFIXED)
-				@echo "*** Libft has compiled successfully ***"
+$(NAME):			$(OBJECTS_PREFIXED)
+					ar rcs $(NAME) $(OBJECTS_PREFIXED)
+					@echo $(GRN)"*** Libft has compiled successfully ***"$(EOC)
 
 clean:
 				$(RMDIR) $(OBJS_DIR)
-				@echo "*** All Object files have been deleted ***"
+					@echo $(RED)"*** All Object files have been deleted ***"$(EOC)
 
-fclean:			clean
+fclean:				clean
 				$(RM) $(NAME)
-				@echo "*** Libft has been deleted ***"
+					@echo $(RED)"*** Libft has been deleted ***"$(EOC)
 
-re:			fclean all
+re:				fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:				all clean fclean re
+
+GRN				 = "\e[92m"
+RED				 = "\e[31m"
+EOC				 = "\e[0m"
